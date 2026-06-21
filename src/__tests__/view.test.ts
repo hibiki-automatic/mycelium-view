@@ -26,17 +26,25 @@ describe('mountView', () => {
     handle.destroy()
   })
 
-  it('applies mycelium-preview class', async () => {
+  it('applies mycelium-preview to targetEl and markdown-body to contentEl', async () => {
     const { mountView } = await import('../mount.js')
     const div = document.createElement('div')
     document.body.appendChild(div)
 
     const handle = mountView(div, { html: '<p>test</p>', theme: 'light' })
+    // targetEl: only mycelium-preview (not markdown-body — that belongs on contentEl
+    // so direct-child github-markdown selectors hit the actual content elements).
     expect(div.classList.contains('mycelium-preview')).toBe(true)
-    expect(div.classList.contains('markdown-body')).toBe(true)
+    expect(div.classList.contains('markdown-body')).toBe(false)
+    // contentEl (the inner wrapper) carries markdown-body.
+    const contentEl = div.querySelector('.mycelium-view-content') as HTMLElement
+    expect(contentEl).not.toBeNull()
+    expect(contentEl.classList.contains('markdown-body')).toBe(true)
     handle.destroy()
     expect(div.classList.contains('mycelium-preview')).toBe(false)
     expect(div.classList.contains('markdown-body')).toBe(false)
+    // contentEl should be removed after destroy.
+    expect(div.querySelector('.mycelium-view-content')).toBeNull()
   })
 
   it('update() swaps content while preserving scrollTop', async () => {

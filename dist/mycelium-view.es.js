@@ -1502,8 +1502,9 @@ function O(o, e = {}) {
   var p;
   const { html: r = "", theme: t = "auto", onScrollRatio: n } = e, a = document.createElement("style"), i = t === "dark" || t === "auto" && typeof window < "u" && ((p = window.matchMedia) == null ? void 0 : p.call(window, "(prefers-color-scheme: dark)").matches);
   a.textContent = S + `
-` + L, o.appendChild(a), o.classList.add("mycelium-preview", "markdown-body"), i && o.classList.add("dark"), o.insertAdjacentHTML("beforeend", '<div class="mycelium-view-content"></div>');
+` + L, o.appendChild(a), o.classList.add("mycelium-preview"), o.insertAdjacentHTML("beforeend", '<div class="mycelium-view-content markdown-body"></div>');
   const d = o.querySelector(".mycelium-view-content");
+  i && d.classList.add("dark");
   let l = null, c = null, s = null;
   function b() {
     I(d), $(d), c && (c(), c = null), c = q(d), l && (l(), l = null), l = j(d);
@@ -1520,7 +1521,7 @@ function O(o, e = {}) {
       return H(o, m), o.scrollTop;
     },
     destroy() {
-      l == null || l(), c == null || c(), s == null || s(), a.remove(), d.remove(), o.classList.remove("mycelium-preview", "markdown-body", "dark");
+      l == null || l(), c == null || c(), s == null || s(), a.remove(), d.remove(), o.classList.remove("mycelium-preview");
     }
   };
 }

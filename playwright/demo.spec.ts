@@ -71,10 +71,14 @@ test.describe('mycelium-view headless acceptance', () => {
       ).__view.mountView(el, { html, theme: 'light' })
     }, SAMPLE_HTML)
 
-    // Theme applied.
+    // Theme applied: outer targetEl carries mycelium-preview.
     await expect.poll(() => page.evaluate(() => document.getElementById('root')!.classList.contains('mycelium-preview'))).toBe(true)
-    // github-markdown-css class also applied.
-    await expect.poll(() => page.evaluate(() => document.getElementById('root')!.classList.contains('markdown-body'))).toBe(true)
+    // github-markdown-css class is on the inner content wrapper (not the outer targetEl)
+    // so that direct-child CSS rules apply to the actual content elements.
+    await expect.poll(() => page.evaluate(() => {
+      const content = document.getElementById('root')!.querySelector('.mycelium-view-content')
+      return content?.classList.contains('markdown-body') ?? false
+    })).toBe(true)
     // KaTeX produced real .katex render output (2 formulas).
     await expect.poll(() => page.evaluate(() => document.querySelectorAll('.katex').length)).toBeGreaterThanOrEqual(2)
     // Mermaid turned the <pre> into an SVG.

@@ -1,0 +1,34 @@
+{
+  "name": "@hibiki-automatic/mycelium-view",
+  "version": "0.1.0",
+  "description": "Client runtime for mycelium markdown views: mounts md-render HTML, runs KaTeX/Mermaid, handles scroll-sync and incremental updates.",
+  "type": "module",
+  "main": "dist/mycelium-view.cjs.js",
+  "module": "dist/mycelium-view.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "dist/index.d.ts",
+      "import": "dist/mycelium-view.es.js",
+      "require": "dist/mycelium-view.cjs.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly --declarationDir dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@hibiki-automatic/mycelium-theme": "file:../mycelium-theme"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@types/node": "^22.0.0",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.3"
+  }
+}

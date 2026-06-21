@@ -1,0 +1,2 @@
+export const KATEX_EXPECTED_VERSION = '0.16.47'
+export const MERMAID_EXPECTED_VERSION = '11.15.0'

@@ -1,0 +1,6 @@
+export { mountView } from './mount.js';
+export type { MountOpts, ViewHandle } from './mount.js';
+export { scrollToLine, createScrollSync } from './scroll.js';
+export type { ScrollSyncOpts } from './scroll.js';
+export { runKaTeX, runMermaid, installCopyButtons, enableMathCopyAsTex } from './plugins.js';
+export { KATEX_EXPECTED_VERSION, MERMAID_EXPECTED_VERSION } from './versions.js';

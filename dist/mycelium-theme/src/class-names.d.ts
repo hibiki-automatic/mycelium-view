@@ -1,0 +1,13 @@
+export declare const CLASS_PREVIEW = "mycelium-preview";
+export declare const CLASS_MARKDOWN_BODY = "markdown-body";
+export declare const CLASS_CODE_WRAP = "code-wrap";
+export declare const CLASS_COPY_BTN = "copy-btn";
+export declare const CLASS_COPY_BTN_COPIED = "copied";
+export declare const CLASS_HL_CODE = "hl-code";
+export declare const CLASS_MERMAID = "mermaid";
+export declare const TAG_MATH_RENDERER = "math-renderer";
+export declare const ATTR_TYPESET = "data-typeset";
+export declare const ATTR_PROCESSED = "data-processed";
+export declare const CLASS_DISPLAY_MATH = "js-display-math";
+export declare const CLASS_KATEX = "katex";
+export declare const CLASS_KATEX_DISPLAY = "katex-display";

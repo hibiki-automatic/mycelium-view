@@ -73,6 +73,8 @@ test.describe('mycelium-view headless acceptance', () => {
 
     // Theme applied.
     await expect.poll(() => page.evaluate(() => document.getElementById('root')!.classList.contains('mycelium-preview'))).toBe(true)
+    // github-markdown-css class also applied.
+    await expect.poll(() => page.evaluate(() => document.getElementById('root')!.classList.contains('markdown-body'))).toBe(true)
     // KaTeX produced real .katex render output (2 formulas).
     await expect.poll(() => page.evaluate(() => document.querySelectorAll('.katex').length)).toBeGreaterThanOrEqual(2)
     // Mermaid turned the <pre> into an SVG.

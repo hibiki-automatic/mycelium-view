@@ -33,8 +33,10 @@ describe('mountView', () => {
 
     const handle = mountView(div, { html: '<p>test</p>', theme: 'light' })
     expect(div.classList.contains('mycelium-preview')).toBe(true)
+    expect(div.classList.contains('markdown-body')).toBe(true)
     handle.destroy()
     expect(div.classList.contains('mycelium-preview')).toBe(false)
+    expect(div.classList.contains('markdown-body')).toBe(false)
   })
 
   it('update() swaps content while preserving scrollTop', async () => {

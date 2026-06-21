@@ -23,7 +23,7 @@ export function mountView(targetEl: HTMLElement, opts: MountOpts = {}): ViewHand
   styleEl.textContent = myceliumCss + '\n' + myceliumDarkCss
   targetEl.appendChild(styleEl)
 
-  targetEl.classList.add('mycelium-preview')
+  targetEl.classList.add('mycelium-preview', 'markdown-body')
   if (isDark) targetEl.classList.add('dark')
 
   targetEl.insertAdjacentHTML('beforeend', '<div class="mycelium-view-content"></div>')
@@ -72,7 +72,7 @@ export function mountView(targetEl: HTMLElement, opts: MountOpts = {}): ViewHand
       scrollSyncCleanup?.()
       styleEl.remove()
       contentEl.remove()
-      targetEl.classList.remove('mycelium-preview', 'dark')
+      targetEl.classList.remove('mycelium-preview', 'markdown-body', 'dark')
     },
   }
 }

@@ -60,7 +60,10 @@ export function mountView(targetEl: HTMLElement, opts: MountOpts = {}): ViewHand
       targetEl.scrollTop = savedTop
     },
     scrollToLine(n: number) {
-      _scrollToLine(contentEl, n)
+      // The scroll container is `targetEl`; line-annotated nodes live inside it
+      // (within `contentEl`). Scroll the container so the ratio fallback and
+      // scrollIntoView both move the right element.
+      _scrollToLine(targetEl, n)
       return targetEl.scrollTop
     },
     destroy() {
